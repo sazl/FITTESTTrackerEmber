@@ -1,0 +1,20 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>ISO Code</th>
+      <th>Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{isocode}}</td>
+        <td>{{fullName}}</td>
+        <td>{{region}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

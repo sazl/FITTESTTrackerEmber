@@ -1,0 +1,133 @@
+<div id="planning-widget-container">
+  <form class="form-horizontal" role="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well well-sm">
+          <div class="form-group">
+            <label for="confirmedType" class="col-sm-4 control-label">
+              Confirmed Type
+            </label>
+            <div class="col-sm-8">
+              {{view Ember.Select
+              id="confirmedType"
+              class="form-control"
+              content=confirmedTypes
+              optionLabelPath="content.confirmedType"
+              optionValuePath="content.id"
+              selection=selectedConfirmedType}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="well well-sm">
+          <div class="form-group">
+            <label for="activity" class="col-sm-4 control-label">
+              Activity
+            </label>
+            <div class="col-sm-8">
+              {{view Ember.Select
+              id="activity"
+              class="form-control"
+              disabled=activityNotAvailable
+              content=selectedActivities
+              optionLabelPath="content.description"
+              optionValuePath="content.id"
+              selection=selectedActivity}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="activity" class="col-sm-4 control-label">
+              Country
+            </label>
+            <div class="col-sm-8">
+              <div class="form-control">
+                <ul class="list-inline">
+                  {{#each selectedActivity.country}}
+                    <li>
+                      {{fullName}}
+                    </li>
+                  {{/each}}                
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="activity" class="col-sm-4 control-label">
+              Activity Type
+            </label>
+            <div class="col-sm-8">
+              <label class="form-control">
+                {{selectedActivity.activityType.activityType}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="planning-table"
+               class="table table-bordered table-responsive table-striped">
+          <thead>
+            <tr>
+              <th>Profile</th>
+              <th>Location</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Duration (Days)</th>
+            </tr>
+          </thead>
+          <tbody id="planning-table-body">
+            {{#each controller.selectedActivity.activityRole}}
+              <tr class="info">
+                <td>{{profileType.profileType}}</td>
+                <td>{{location}}</td>
+                <td>{{simple-date startDate}}</td>
+                <td>{{simple-date endDate}}</td>
+                <td>{{duration}}</td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <table id="planning-table"
+                         class="table table-bordered table-responsive">
+                    <thead>
+                      <tr>
+                        <th>Staff Name</th>
+                        <th>Staff Index</th>
+                        <th>Location</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Duration</th>
+                        <th>Comments</th>
+                        <th>Confirmed Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each staffRole}}
+                      <tr>
+                        {{#each staff}}
+                        <td>{{fullName}}</td>
+                        <td>{{id}}</td>
+                        {{/each}}
+                        <td>{{location}}</td>
+                        <td>{{simple-date startDate}}</td>
+                        <td>{{simple-date endDate}}</td>
+                        <td>{{duration}}</td>
+                        <td>{{comments}}</td>
+                        <td>{{confirmedType.confirmedType}}</td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+{{outlet}}

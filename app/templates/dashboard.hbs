@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs" role="tablist">
+  {{#link-to 'active-info' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Active Info
+    </a>
+  {{/link-to}}
+
+  {{#link-to 'active-chart' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Charts
+    </a>
+  {{/link-to}}
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid">
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+</div>

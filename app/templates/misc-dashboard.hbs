@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs" role="tablist">
+  {{#link-to 'countries' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Countries
+    </a>
+  {{/link-to}}
+  {{#link-to 'languages' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Languages
+    </a>
+  {{/link-to}}
+  {{#link-to 'confirmed-types' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Confirmed Types
+    </a>
+  {{/link-to}}
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid">
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+</div>

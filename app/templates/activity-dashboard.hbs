@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs" role="tablist">
+  {{#link-to 'activities' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Activity
+    </a>
+  {{/link-to}}
+  {{#link-to 'activity-roles' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Activity Role
+    </a>
+  {{/link-to}}
+  {{#link-to 'activity-types' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Activity Type
+    </a>
+  {{/link-to}}
+  {{#link-to 'events' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Event
+    </a>
+  {{/link-to}}
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid">
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+</div>

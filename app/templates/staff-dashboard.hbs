@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs" role="tablist">
+    {{#link-to 'staff-roles' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Staff Role
+    </a>
+  {{/link-to}}
+  {{#link-to 'staff-list' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Staff List
+    </a>
+  {{/link-to}}
+  {{#link-to 'staff-types' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Staff Type
+    </a>
+  {{/link-to}}
+  {{#link-to 'profile-types' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Profile Type
+    </a>
+  {{/link-to}}
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid">
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+</div>

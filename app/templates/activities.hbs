@@ -1,0 +1,32 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>ETC Service Map</th>
+      <th>Activity Type</th>
+      <th>Confirmed Type</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{description}}</td>
+        <td>{{activityType.activityType}}</td>
+        <td>
+          <p class="label label-default">
+            {{confirmedType.confirmedType}}
+          </p>
+        </td>
+        <td>{{etcServiceMap}}</td>
+        <td>
+          {{#each country}}
+            {{fullName}}<br/>
+          {{/each}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

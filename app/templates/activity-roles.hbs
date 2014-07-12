@@ -1,0 +1,24 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Profile Type</th>
+      <th>Location</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{activity.description}}</td>
+        <td>{{profileType.profileType}}</td>
+        <td>{{location}}</td>
+        <td>{{simple-date startDate}}</td>
+        <td>{{simple-date endDate}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

@@ -1,0 +1,26 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Staff Type</th>
+      <th>Staff</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{staffType}}</td>
+        <td>
+          <ul class="list-group">
+            {{#each s in staff}}
+              <li class="list-group-item">
+                {{s.fullName}}
+              </li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

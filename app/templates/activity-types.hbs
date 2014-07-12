@@ -1,0 +1,29 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Activity Type</th>
+      <th>Activity</th>
+      <th>Color Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{activityType}}</td>
+
+        <td>
+          <ul class="list-group">
+          {{#each a in activity}}
+            <li class="list-group-item">
+              {{a.description}}
+            </li>
+          {{/each}}
+          </ul>
+        </td>
+        <td>{{colorCode}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

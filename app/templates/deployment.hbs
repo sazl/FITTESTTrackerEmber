@@ -1,0 +1,153 @@
+<div class="container-fluid">
+  <form class="form-horizontal" role="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="well">
+          <div class="form-group">
+            <label for="startDate" class="col-sm-3 control-label">
+              Start Date
+            </label>
+            <div class="col-sm-9">
+              {{input id="startDate" type="date"
+              class="form-control"
+              placeholder="Start Date"}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="endDate" class="col-sm-3 control-label">
+              End Date
+            </label>
+            <div class="col-sm-9">
+              {{input id="endDate" type="date"
+              class="form-control"
+              placeholder="End Date"}}
+            </div>
+          </div>
+        </div>
+        <div class="well">
+          <div class="form-group">
+            <label for="staffType" class="col-sm-3 control-label">
+              Staff Type
+            </label>
+            <div class="col-sm-9">
+              {{view Ember.Select
+              class="form-control"
+              multiple="true"
+              viewName="select"
+              content=people
+              optionLabelPath="content.fullName"
+              optionValuePath="content.id"
+              selection=selectedPerson}}
+            </div>
+          </div>
+        </div>
+        
+        <div class="well">
+          <div class="form-group">
+            <label for="activity" class="col-sm-3 control-label">
+              Activity
+            </label>
+            <div class="col-sm-9">
+              {{view Ember.Select
+              class="form-control"
+              multiple="true"
+              viewName="select"
+              content=people
+              optionLabelPath="content.fullName"
+              optionValuePath="content.id"
+              selection=selectedPerson}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="well">
+          <div class="form-group">
+            <label for="showToday" class="col-sm-3 control-label">
+              Show Today
+            </label>
+            <div class="col-sm-9">
+              {{view Ember.Checkbox id="showToday" class=""}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="todayDate" class="col-sm-3 control-label">
+              Today's Date
+            </label>
+            <div class="col-sm-9">
+              {{input id="todayDate" type="date"
+              class="form-control"
+              placeholder="Today"}}
+            </div>
+          </div>
+        </div>
+
+        <div class="well">
+          <div class="form-group">
+            <label for="showWeeklyGrid" class="col-sm-3 control-label">
+              Show Weekly Grid
+            </label>
+            <div class="col-sm-9">
+              {{view Ember.Checkbox id="showWeeklyGrid"}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="weekStartDay" class="col-sm-3 control-label">
+              Week Start Day
+            </label>
+            <div class="col-sm-9">
+              {{view Ember.Select
+              class="form-control"
+              viewName="select"
+              content=people
+              optionLabelPath="content.fullName"
+              optionValuePath="content.id"
+              selection=selectedPerson}}
+            </div>
+          </div>
+        </div>
+
+        <div class="well">
+          <div class="form-group">
+            <label for="showDateBars" class="col-sm-5 control-label">
+              Show Date Bars
+            </label>
+            <div class="col-sm-7">
+              {{view Ember.Checkbox id="showDateBars"}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="showConfirmedOnly" class="col-sm-5 control-label">
+              Show Confirmed Only
+            </label>
+            <div class="col-sm-7">
+              {{view Ember.Checkbox id="showConfirmedOnly"}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="showPlannedEvents" class="col-sm-5 control-label">
+              Show Planned Events
+            </label>
+            <div class="col-sm-7">
+              {{view Ember.Checkbox id="showPlannedEvents"}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4 pull-left">
+        <div class="btn-toolbar">
+          <button type="reset" class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove"> Clear</span>
+          </button>
+          <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok"> Submit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

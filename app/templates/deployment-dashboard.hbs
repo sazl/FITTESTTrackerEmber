@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs" role="tablist">
+  {{#link-to 'deployment' tagName="li"}}
+    <a {{bind-attr href="view.href"}}>
+      Deployments
+    </a>
+  {{/link-to}}
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid">
+    <div class="row">
+      {{outlet}}
+    </div>
+  </div>
+</div>

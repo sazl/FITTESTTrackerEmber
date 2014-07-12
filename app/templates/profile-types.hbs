@@ -1,0 +1,36 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Profile Type</th>
+      <th>Staff</th>
+      <th>Activity Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{profileType}}</td>
+        <td>
+          <ul class="list-group">
+            {{#each s in staff}}
+              <li class="list-group-item">
+                {{s.fullName}}
+              </li>
+            {{/each}}
+          </ul>
+        </td>
+        <td>
+          <ul class="list-group">
+            {{#each ar in activityRole}}
+              <li class="list-group-item">
+                {{ar.activity.description}}
+              </li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

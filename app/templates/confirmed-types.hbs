@@ -1,0 +1,23 @@
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Confirmed Type</th>
+      <th>Color Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{confirmedType}}</td>
+        <td>
+          <p class="label label-default">
+            {{confirmedColorCode}}
+          </p>
+        </td>
+            
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}
