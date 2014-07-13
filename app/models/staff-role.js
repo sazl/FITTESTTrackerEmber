@@ -9,6 +9,10 @@ export default DS.Model.extend({
   activityType: DS.hasMany('activityType', { async: true }),
   staff: DS.hasMany('staff', { async: true }),
 
+  firstStaff: function() {
+    return this.get('staff').objectAt(0);
+  }.property('staff.@each'),
+  
   duration: function() {
     var startDate = this.get('startDate');
     var endDate = this.get('endDate');

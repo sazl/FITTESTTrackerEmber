@@ -88,11 +88,10 @@
             <div class="col-sm-9">
               {{view Ember.Select
               class="form-control"
-              viewName="select"
-              content=people
-              optionLabelPath="content.fullName"
-              optionValuePath="content.id"
-              selection=selectedPerson}}
+              content=weekStartDates
+              optionLabelPath="content"
+              optionValuePath="content"
+              selection=weekStartDate}}
             </div>
           </div>
         </div>

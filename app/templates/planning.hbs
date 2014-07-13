@@ -88,41 +88,48 @@
                 <td>{{simple-date endDate}}</td>
                 <td>{{duration}}</td>
               </tr>
-              <tr>
-                <td colspan="5">
-                  <table id="planning-table"
-                         class="table table-bordered table-responsive">
-                    <thead>
-                      <tr>
-                        <th>Staff Name</th>
-                        <th>Staff Index</th>
-                        <th>Location</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Duration</th>
-                        <th>Comments</th>
-                        <th>Confirmed Type</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {{#each staffRole}}
-                      <tr>
-                        {{#each staff}}
-                        <td>{{fullName}}</td>
-                        <td>{{id}}</td>
+              {{#if staffRole}}
+                <tr>
+                  <td colspan="5">
+                    <table id="planning-table"
+                           class="table table-bordered table-responsive">
+                      <thead>
+                        <tr>
+                          <th>Staff Name</th>
+                          <th>Staff Index</th>
+                          <th>Location</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Duration</th>
+                          <th>Comments</th>
+                          <th>Confirmed Type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each sr in staffRole}}
+                          <tr>
+                            <td>{{sr.firstStaff.fullName}}</td>
+                            <td>{{sr.firstStaff.id}}</td>
+                            <td>{{sr.location}}</td>
+                            <td>{{simple-date sr.startDate}}</td>
+                            <td>{{simple-date sr.endDate}}</td>
+                            <td>{{sr.duration}}</td>
+                            <td>{{sr.comments}}</td>
+                            <td>
+                              {{view Ember.Select
+                              class="form-control"
+                              content=controller.confirmedTypes
+                              optionLabelPath="content.confirmedType"
+                              optionValuePath="content.id"
+                              selection=sr.confirmedType}}
+                            </td>
+                          </tr>
                         {{/each}}
-                        <td>{{location}}</td>
-                        <td>{{simple-date startDate}}</td>
-                        <td>{{simple-date endDate}}</td>
-                        <td>{{duration}}</td>
-                        <td>{{comments}}</td>
-                        <td>{{confirmedType.confirmedType}}</td>
-                      </tr>
-                      {{/each}}
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              {{/if}}
             {{/each}}
           </tbody>
         </table>

@@ -48,4 +48,7 @@ app.import('vendor/ember-notify/dist/ember-notify.css');
 app.import('vendor/chosen/chosen.css');
 app.import('vendor/chosen/chosen.jquery.js');
 
+app.import('vendor/vis/dist/vis.js');
+app.import('vendor/vis/dist/vis.css');
+
 module.exports = mergeTrees([app.toTree(), fontAssets, extraAssets]);
