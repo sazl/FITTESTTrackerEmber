@@ -102,6 +102,7 @@
                           <th>End Date</th>
                           <th>Duration</th>
                           <th>Comments</th>
+                          <th>Confirmation</th>
                           <th>Confirmed Type</th>
                         </tr>
                       </thead>
@@ -116,8 +117,14 @@
                             <td>{{sr.duration}}</td>
                             <td>{{sr.comments}}</td>
                             <td>
+                              {{#color-label color=sr.confirmedType.confirmedColorCode}}
+                                {{sr.confirmedType.confirmedType}}
+                              {{/color-label}}
+                            </td>
+                            <td>
                               {{view Ember.Select
                               class="form-control"
+                              style=sr.confirmedType.confirmedColorCodeStyle
                               content=controller.confirmedTypes
                               optionLabelPath="content.confirmedType"
                               optionValuePath="content.id"

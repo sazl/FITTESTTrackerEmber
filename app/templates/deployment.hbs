@@ -5,7 +5,7 @@
       {{timeline-chart groups=groups items=items}}
     </div>
   </div>
-
+  
   <div class="row">
     <form class="form-horizontal" role="form">
       <div class="row">
@@ -16,8 +16,8 @@
                 Start Date
               </label>
               <div class="col-sm-9">
-                {{input id="startDate" type="date" value=startDate
-                class="form-control"
+                {{input id="startDate" type="text" value=startDate
+                class="form-control datepicker"
                 placeholder="Start Date"}}
               </div>
             </div>
@@ -26,8 +26,8 @@
                 End Date
               </label>
               <div class="col-sm-9">
-                {{input id="endDate" type="date"
-                class="form-control"
+                {{input id="endDate" type="text" value=endDate
+                class="form-control datepicker"
                 placeholder="End Date"}}
               </div>
             </div>
@@ -39,6 +39,7 @@
               </label>
               <div class="col-sm-9">
                 {{view Ember.Select
+                id="selectedStaffTypes"
                 class="form-control"
                 multiple="true"
                 content=staffTypes
@@ -82,8 +83,8 @@
                 Today's Date
               </label>
               <div class="col-sm-9">
-                {{input id="todayDate" type="date"
-                class="form-control"
+                {{input id="todayDate" type="text"
+                class="form-control datepicker"
                 placeholder="Today"}}
               </div>
             </div>
@@ -146,7 +147,7 @@
             <button type="reset" class="btn btn-danger">
               <span class="glyphicon glyphicon-remove"> Clear</span>
             </button>
-            <button type="submit" class="btn btn-success">
+            <button type="button" class="btn btn-success" {{action "generateDeploymentTimeline"}}>
               <span class="glyphicon glyphicon-ok"> Submit</span>
             </button>
           </div>

@@ -1,9 +1,15 @@
-<table class="table table-bordered table-striped table-responsive">
+{{outlet}}
+
+{{create-button label="Create Country" link="countries.new"}}
+
+<table id="countries-table"
+       class="table table-bordered table-striped table-responsive">
   <thead>
     <tr>
       <th>Full Name</th>
       <th>ISO Code</th>
       <th>Region</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -12,9 +18,14 @@
         <td>{{isocode}}</td>
         <td>{{fullName}}</td>
         <td>{{region}}</td>
+        <td>
+          {{action-buttons
+          createAction="createEvent"
+          editAction="editEvent"
+          deleteAction="deleteEvent"
+          item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
-
-{{outlet}}

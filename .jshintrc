@@ -4,7 +4,8 @@
     "window": true,
     "EmberTestENV": true,
     "WowENV": true,
-    "moment": true
+    "moment": true,
+    "vis": true
   },
   "browser" : true,
   "boss" : true,

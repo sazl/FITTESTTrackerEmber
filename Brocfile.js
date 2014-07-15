@@ -17,6 +17,10 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('vendor/jquery-ui/jquery-ui.js');
+app.import('vendor/jquery-ui/themes/smoothness/jquery-ui.css');
+app.import('vendor/jquery-ui/themes/smoothness/theme.css');
+
 app.import('vendor/bootstrap/dist/js/bootstrap.js');
 app.import('vendor/bootstrap/dist/css/bootstrap.css');
 app.import('vendor/bootstrap/dist/css/bootstrap-theme.css');
@@ -39,15 +43,22 @@ app.import('vendor/pace/pace.js');
 app.import('vendor/pace/themes/pace-theme-center-simple.css');
 
 app.import('vendor/moment/moment.js');
-
 app.import('vendor/parsleyjs/dist/parsley.js');
 
+/*
 app.import('vendor/ember-notify/dist/named-amd/main.js', {
   exports: { 'ember-notify': ['default'] } });
 app.import('vendor/ember-notify/dist/ember-notify.css');
+*/
 
-app.import('vendor/chosen/chosen.css');
-app.import('vendor/chosen/chosen.jquery.js');
+app.import('vendor/select2/select2.css');
+app.import('vendor/select2/select2-bootstrap.css');
+app.import('vendor/select2/select2.js');
+var select2Assets = pickFiles('vendor/select2/', {
+  srcDir: '/',
+  files: ['**/*.png'],
+  destDir: '/assets'
+});
 
 app.import('vendor/vis/dist/vis.js');
 app.import('vendor/vis/dist/vis.css');
@@ -66,5 +77,6 @@ module.exports = mergeTrees([
   app.toTree(),
   fontAssets,
   extraAssets,
-  tableAssets
+  tableAssets,
+  select2Assets
 ]);

@@ -1,13 +1,24 @@
-<table class="table table-bordered table-striped table-responsive">
+{{create-button label="Create Language"}}
+
+<table id="languages-table"
+       class="table table-bordered table-striped table-responsive">
   <thead>
     <tr>
       <th>Language</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     {{#each}}
       <tr>
         <td>{{language}}</td>
+        <td>
+          {{action-buttons
+          createAction="createEvent"
+          editAction="editEvent"
+          deleteAction="deleteEvent"
+          item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>

@@ -31,5 +31,9 @@ export default Ember.Controller.extend({
 
   selectedActivityChanged: function() {
 
-  }.observes('selectedActivity')
+  }.observes('selectedActivity'),
+
+  actions: {
+    
+  }
 });

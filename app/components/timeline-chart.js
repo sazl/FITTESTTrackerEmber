@@ -7,10 +7,7 @@ export default Ember.Component.extend({
   timeline: null,
 
   didInsertElement: function() {
-    var _this = this;
-    
-    var container = $('<div>').appendTo(this.$())[0];
-    var data = this.get('visDataSet');
+    var container = this.$('<div>').appendTo(this.$())[0];
     var options = {
       groupOrder: 'id',
       editable: false

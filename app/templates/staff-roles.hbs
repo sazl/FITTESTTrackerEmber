@@ -1,0 +1,45 @@
+<table id="staff-roles-table"
+       class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Staff Name</th>
+      <th>Staff Index</th>
+      <th>Location</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Duration</th>
+      <th>Comments</th>
+      <th>Confirmation</th>
+      <th>Confirmed Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{firstStaff.fullName}}</td>
+        <td>{{firstStaff.id}}</td>
+        <td>{{location}}</td>
+        <td>{{simple-date startDate}}</td>
+        <td>{{simple-date endDate}}</td>
+        <td>{{duration}}</td>
+        <td>{{comments}}</td>
+        <td>
+          {{#color-label color=confirmedType.confirmedColorCode}}
+            {{confirmedType.confirmedType}}
+          {{/color-label}}
+        </td>
+        <td>
+          {{view Ember.Select
+          class="form-control"
+          style=confirmedType.confirmedColorCodeStyle
+          content=controller.confirmedTypes
+          optionLabelPath="content.confirmedType"
+          optionValuePath="content.id"
+          selection=confirmedType}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

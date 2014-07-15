@@ -1,8 +1,14 @@
 <div class="btn-toolbar" role="toolbar">
   <div class="btn-group btn-group-sm">
-    <button type="button" class="btn btn-danger" {{action deleteAction item}}>
+    {{#if isShowingConfirmation}}
+    <button type="button" class="btn btn-danger"
+            {{action deleteAction item}}>
+      <span class="glyphicon glyphicon-trash"> Click again to confirm</span>
+    {{else}}
+    <button type="button" class="btn btn-danger" {{action deleteConfirmAction item}}>
       <span class="glyphicon glyphicon-remove"> Delete</span>
     </button>
+    {{/if}}
   </div>
   <div class="btn-group btn-group-sm">
     <button type="button" class="btn btn-primary" {{action editAction item}}>

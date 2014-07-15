@@ -67,8 +67,8 @@ Router.map(function() {
     });
     
     this.resource('countries', function() {
+      this.route('new');
       this.resource('country', { path : ':country_id' }, function() {
-        this.route('new');
         this.route('edit');
         this.route('delete');
       });

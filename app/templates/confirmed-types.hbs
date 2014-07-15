@@ -1,8 +1,10 @@
-<table class="table table-bordered table-striped table-responsive">
+<table id="confirmed-types-table"
+       class="table table-bordered table-striped table-responsive">
   <thead>
     <tr>
       <th>Confirmed Type</th>
       <th>Color Code</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -10,11 +12,17 @@
       <tr>
         <td>{{confirmedType}}</td>
         <td>
-          <p class="label label-default">
+          {{#color-label color=confirmedColorCode}}
             {{confirmedColorCode}}
-          </p>
+          {{/color-label}}
         </td>
-            
+        <td>
+          {{action-buttons
+          createAction="createEvent"
+          editAction="editEvent"
+          deleteAction="deleteEvent"
+          item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
