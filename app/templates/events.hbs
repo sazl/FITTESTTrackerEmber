@@ -1,10 +1,12 @@
-<table class="table table-bordered table-striped table-responsive">
+<table id="events-table"
+       class="table table-bordered table-striped table-responsive">
   <thead>
     <tr>
       <th>Event</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th>Color Code</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +16,13 @@
         <td>{{simple-date startDate}}</td>
         <td>{{simple-date endDate}}</td>
         <td>{{colorCode}}</td>
+        <td>
+          {{action-buttons
+          createAction="createEvent"
+          editAction="editEvent"
+          deleteAction="deleteEvent"
+          item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>

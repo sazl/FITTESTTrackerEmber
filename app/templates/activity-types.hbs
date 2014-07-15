@@ -1,16 +1,17 @@
-<table class="table table-bordered table-striped table-responsive">
+<table id="activity-types-table"
+       class="table table-bordered table-striped table-responsive">
   <thead>
     <tr>
       <th>Activity Type</th>
       <th>Activity</th>
       <th>Color Code</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     {{#each}}
       <tr>
         <td>{{activityType}}</td>
-
         <td>
           <ul class="list-group">
           {{#each a in activity}}
@@ -21,6 +22,13 @@
           </ul>
         </td>
         <td>{{colorCode}}</td>
+        <td>
+          {{action-buttons
+          createAction="createEvent"
+          editAction="editEvent"
+          deleteAction="deleteEvent"
+          item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>

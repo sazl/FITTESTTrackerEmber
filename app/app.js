@@ -9,7 +9,17 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
-Ember.Inflector.inflector.irregular('staff', 'stafflist');
+Ember.Inflector.inflector.irregular('staff', 'staffList');
+
+Ember.View.reopen({
+  didInsertElement : function() {
+    this._super();
+    Ember.run.scheduleOnce('afterRender', this, this.didRenderElement);
+  },
+  didRenderElement : function() {
+  }
+});
+
 
 loadInitializers(App, 'ember-test');
 

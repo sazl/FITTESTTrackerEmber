@@ -36,9 +36,10 @@ var extraAssets = pickFiles('vendor/bootstrap/dist/css', {
 });
 
 app.import('vendor/pace/pace.js');
-app.import('vendor/pace/themes/pace-theme-minimal.css');
+app.import('vendor/pace/themes/pace-theme-center-simple.css');
 
 app.import('vendor/moment/moment.js');
+
 app.import('vendor/parsleyjs/dist/parsley.js');
 
 app.import('vendor/ember-notify/dist/named-amd/main.js', {
@@ -51,4 +52,19 @@ app.import('vendor/chosen/chosen.jquery.js');
 app.import('vendor/vis/dist/vis.js');
 app.import('vendor/vis/dist/vis.css');
 
-module.exports = mergeTrees([app.toTree(), fontAssets, extraAssets]);
+app.import('vendor/datatables/media/js/jquery.dataTables.js');
+app.import('vendor/datatables/media/css/jquery.dataTables.css');
+var tableAssets = pickFiles('vendor/datatables/media/images/', {
+  srcDir: '/',
+  files: ['**/*'],
+  destDir: '/images'
+});
+
+app.import('vendor/alertify/alertify.js');
+
+module.exports = mergeTrees([
+  app.toTree(),
+  fontAssets,
+  extraAssets,
+  tableAssets
+]);

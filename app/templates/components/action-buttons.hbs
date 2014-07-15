@@ -1,0 +1,18 @@
+<div class="btn-toolbar" role="toolbar">
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-danger" {{action deleteAction item}}>
+      <span class="glyphicon glyphicon-remove"> Delete</span>
+    </button>
+  </div>
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-primary" {{action editAction item}}>
+      <span class="glyphicon glyphicon-edit"> Edit</span>
+    </button>
+  </div>
+  <div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-success" {{action createAction item}}>
+      <span class="glyphicon glyphicon-eye-open"> View</span>
+    </button>
+  </div>
+</div>
+{{yield}}
