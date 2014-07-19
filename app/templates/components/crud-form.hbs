@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    {{#if padding}}
+      <div class="tab-content">
+    {{/if}}
+    {{#em-form model=model submit_button=false action="createAction"
+      form_layout="horizontal"}}
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well well-lg">
+            <div class="row">
+              {{yield}}
+            </div>
+            
+            <div class="row">
+              {{em-form-submit type=button_type
+                               classes="btn btn-success"
+                               text=button_label}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/em-form}}
+    {{#if padding}}
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -6,9 +6,13 @@ export default DS.Model.extend({
   location: DS.attr('string'),
   comments: DS.attr('string'),
   confirmedType: DS.belongsTo('confirmedType'),
-  activityType: DS.hasMany('activityType', { async: true }),
+  activityRole: DS.belongsTo('activityRole'),
   staff: DS.hasMany('staff', { async: true }),
 
+  description: function() {
+    return this.get('activityRole.description');
+  }.property('activityRole.description'),
+  
   firstStaff: function() {
     return this.get('staff').objectAt(0);
   }.property('staff.@each'),

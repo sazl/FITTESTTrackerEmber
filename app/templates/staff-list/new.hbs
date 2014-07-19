@@ -1,0 +1,50 @@
+{{#crud-form model=this action="createStaff"}}
+  {{em-input property="firstName" label="First Name" placeholder="First Name"}}
+  {{em-input property="lastName" label="Last Name" placeholder="Last Name"}}
+  {{em-input property="dateOfBirth"
+  label="Date of Birth" placeholder="Date of Birth"}}
+  
+  {{em-input property="title" label="Title" placeholder="Title"}}
+  {{em-input property="mobile" label="Mobile" placeholder="Mobile Phone Number"}}
+  {{em-input property="thuraya" label="Thuraya" placeholder="Thuraya"}}
+  {{em-input property="staffColorCode"
+  label="Color Code" placeholder="Staff Color Code"}}
+
+  {{em-select property="staffType"
+  label="Staff Type" placeholder="Staff Type"
+  content=staffTypes
+  optionValuePath="content.id"
+  optionLabelPath="content.staffType"}}
+  
+  {{em-select property="profileType"
+  label="Profile Type" placeholder="Profile Type"
+  content=profileTypes
+  multiple=true
+  optionValuePath="content.id"
+  optionLabelPath="content.profileType"}}
+  
+  {{em-select property="staffRole"
+  label="Staff Role" placeholder="Staff Role"
+  content=staffRoles
+  multiple=true
+  optionValuePath="content.id"
+  optionLabelPath="content.activityRole.description"}}
+  
+  {{em-select property="nationality"
+  label="Nationality"
+  placeholder="Nationality"
+  multiple=true
+  content=nationalities
+  optionValuePath="content.id"
+  optionLabelPath="content.fullName"}}
+  
+  {{em-select property="language"
+  label="Language" placeholder="Language"
+  multiple=true
+  content=languages
+  optionValuePath="content.id"
+  optionLabelPath="content.language"}}
+
+{{/crud-form}}
+
+{{outlet}}

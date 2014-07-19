@@ -15,35 +15,61 @@ export default Ember.Controller.extend({
   activities: [],
   weekStartDates: ['Sunday', 'Monday'],
 
+  container: null,
   groups: new vis.DataSet([]),
   items: new vis.DataSet([]),
-
+  
   actions: {
     generateRequirementTimeline: function() {
-      var activities = this.get('activities');
+      var self = this;
       var groups = [];
       var items = [];
-      activities.forEach(function (item, index, en) {
+      var container = this.get('container');
+
+      var selectedActivities = this.get('selectedActivities');
+      selectedActivities.forEach(function(activity) {
         var res = {};
-        res.id = item.get('id');
-        res.content = item.get('description');
-        res.value = item.get('id') + 1;
-        groups.push(res);
-        console.log(item);
-        var activityRoles = item.get('activityRole');
-        activityRoles.forEach(function (ar, idx, en2) {
-          var role = {};
-          role.id = ar.get('id');
-          role.group = res.id;
-          role.content = ar.get('profileType').get('profileType');
-          role.start = ar.get('startDate');
-          role.end = ar.get('endDate');
-          items.push(role);
-        });
+        res.id = activity.get('id');
+        res.content = activity.get('description');
+        res.value = activity.get('id');
+        groups.pushObject(res);
       });
       
-      this.set('groups', new vis.DataSet(groups));
-      this.set('items', new vis.DataSet(items));
+      var activityRolesPromises = selectedActivities.getEach('activityRole');
+      Ember.RSVP.all(activityRolesPromises)
+        .then(function(activityRolesSets) {
+          var profileTypePromises = activityRolesSets.getEach('profileType');
+          Ember.RSVP.all(profileTypePromises).then(function(profileTypesSets) {
+            console.log(profileTypesSets);
+            var profileTypes = profileTypesSets.map(function(ptset) {
+              return [].pushObjects(ptset.toArray());
+            });
+            
+            var activityRoles = activityRolesSets.map(function(set){
+              return [].pushObjects(set.toArray());
+            });
+            
+            activityRoles.forEach(function(ars, idx, en2) {
+              ars.forEach(function(ar) {
+                var role = {};
+                role.id = parseInt(ar.get('id'));
+                role.group = parseInt(idx + 1);
+                role.content = ar.get('profileType');
+                var startDate = ar.get('startDate');
+                var endDate = ar.get('endDate');
+                role.start = startDate ? startDate : '01/01/2000';
+                role.end = endDate ? endDate : '01/01/2000';
+                console.log(role);
+                items.push(role);
+              });
+            });
+          });
+
+          console.log(groups);
+          console.log(items);
+          self.set('groups', new vis.DataSet(groups));
+          self.set('items', new vis.DataSet(items));
+        });
     }
   }
 });

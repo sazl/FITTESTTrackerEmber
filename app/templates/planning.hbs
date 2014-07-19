@@ -1,6 +1,6 @@
 <div id="planning-widget-container">
-  <form class="form-horizontal" role="form">
-    <div class="row">
+  <div class="row">
+    <form class="form-horizontal" role="form">
       <div class="col-sm-4">
         <div class="well well-sm">
           <div class="form-group">
@@ -17,7 +17,6 @@
               selection=selectedConfirmedType}}
             </div>
           </div>
-
         </div>
 
         <div class="well well-sm">
@@ -64,33 +63,83 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <table id="planning-table"
-               class="table table-bordered table-responsive table-striped">
-          <thead>
-            <tr>
-              <th>Profile</th>
-              <th>Location</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Duration (Days)</th>
+    {{#crud-form model=this action="createStaffRole" padding=false button_label="Save"}}
+      {{em-select property="staffRoleStaff"
+      prompt="--- Staff ---"
+      label="Staff"
+      placeholder="Staff"
+      content=staffList
+      optionValuePath="content.id"
+      optionLabelPath="content.fullName"}}
+
+      {{em-input property="staffRoleLocation" label="Location" placeholder="Location"}}
+      
+      {{em-input property="staffRoleStartDate" label="Start Date" placeholder="Start Date"}}
+      {{em-input property="staffRoleEndDate" label="End Date" placeholder="End Date"}}
+      {{em-input  property="staffRoleComments" label="Comments" placeholder="Comments"}}
+
+      {{em-select property="staffRoleConfirmedType"
+      prompt="--- Confirmed Type ---"
+      label="Confirmed Type"
+      placeholder="Confirmed Type"
+      content=confirmedTypes
+      selection=staffRoleConfirmedType
+      optionValuePath="content.id"
+      optionLabelPath="content.confirmedType"}}
+    {{/crud-form}}
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table id="planning-table"
+             class="table table-bordered table-responsive table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Profile</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Duration (Days)</th>
+          </tr>
+        </thead>
+        <tbody id="planning-table-body">
+          {{#each ar in controller.selectedActivity.activityRole
+            itemController="planning-activity-role"}}
+            <tr class="info">
+              <td>
+                {{#if ar.isExpanded}}
+                  <div class="btn-toolbar">
+                    <div class="btn-group btn-group-sm">
+                      <button type="button" class="btn btn-sm btn-danger"
+                              {{action "collapse" on="click"}}>
+                        <span class="glyphicon glyphicon-minus"></span>
+                      </button>
+                    </div>
+                    <div class="btn-group btn-group-sm">
+
+                    </div>
+                  </div>
+                {{else}}
+                  <button type="button" class="btn btn-sm btn-success"
+                          {{action "collapse" on="click"}}>
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                  <span class="badge"> {{ar.staffRole.length}}</span>
+                {{/if}}
+              </td>
+              <td>{{ar.profileType.profileType}}</td>
+              <td>{{ar.location}}</td>
+              <td>{{simple-date ar.startDate}}</td>
+              <td>{{simple-date ar.endDate}}</td>
+              <td>{{ar.duration}}</td>
             </tr>
-          </thead>
-          <tbody id="planning-table-body">
-            {{#each controller.selectedActivity.activityRole}}
-              <tr class="info">
-                <td>{{profileType.profileType}}</td>
-                <td>{{location}}</td>
-                <td>{{simple-date startDate}}</td>
-                <td>{{simple-date endDate}}</td>
-                <td>{{duration}}</td>
-              </tr>
-              {{#if staffRole}}
+            {{#if ar.staffRole}}
+              {{#if ar.isExpanded}}
                 <tr>
-                  <td colspan="5">
+                  <td colspan="6">
                     <table id="planning-table"
                            class="table table-bordered table-responsive">
                       <thead>
@@ -100,15 +149,15 @@
                           <th>Location</th>
                           <th>Start Date</th>
                           <th>End Date</th>
-                          <th>Duration</th>
+                          <th>Duration (Days)</th>
                           <th>Comments</th>
-                          <th>Confirmation</th>
                           <th>Confirmed Type</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {{#each sr in staffRole}}
-                          <tr>
+                        {{#each sr in ar.staffRole
+                          itemController="planning-staff-role"}}
+                          <tr {{action "toggleEdit" sr}}>
                             <td>{{sr.firstStaff.fullName}}</td>
                             <td>{{sr.firstStaff.id}}</td>
                             <td>{{sr.location}}</td>
@@ -121,15 +170,6 @@
                                 {{sr.confirmedType.confirmedType}}
                               {{/color-label}}
                             </td>
-                            <td>
-                              {{view Ember.Select
-                              class="form-control"
-                              style=sr.confirmedType.confirmedColorCodeStyle
-                              content=controller.confirmedTypes
-                              optionLabelPath="content.confirmedType"
-                              optionValuePath="content.id"
-                              selection=sr.confirmedType}}
-                            </td>
                           </tr>
                         {{/each}}
                       </tbody>
@@ -137,11 +177,12 @@
                   </td>
                 </tr>
               {{/if}}
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
+            {{/if}}
+          {{/each}}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
 {{outlet}}

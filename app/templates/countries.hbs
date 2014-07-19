@@ -15,15 +15,11 @@
   <tbody>
     {{#each}}
       <tr>
-        <td>{{isocode}}</td>
         <td>{{fullName}}</td>
+        <td>{{isocode}}</td>
         <td>{{region}}</td>
         <td>
-          {{action-buttons
-          createAction="createEvent"
-          editAction="editEvent"
-          deleteAction="deleteEvent"
-          item=this}}
+          {{action-buttons item=this}}
         </td>
       </tr>
     {{/each}}

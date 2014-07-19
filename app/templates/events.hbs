@@ -15,12 +15,17 @@
         <td>{{event}}</td>
         <td>{{simple-date startDate}}</td>
         <td>{{simple-date endDate}}</td>
-        <td>{{colorCode}}</td>
+        <td>
+          {{#color-label color=colorCode}}
+            {{colorCode}}
+          {{/color-label}}
+        </td>
         <td>
           {{action-buttons item=this}}
         </td>
       </tr>
     {{/each}}
+
   </tbody>
 </table>
 

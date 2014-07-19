@@ -1,4 +1,6 @@
-{{create-button label="Create Language"}}
+{{outlet}}
+
+{{create-button label="Create Language" link="languages.new"}}
 
 <table id="languages-table"
        class="table table-bordered table-striped table-responsive">
@@ -13,15 +15,9 @@
       <tr>
         <td>{{language}}</td>
         <td>
-          {{action-buttons
-          createAction="createEvent"
-          editAction="editEvent"
-          deleteAction="deleteEvent"
-          item=this}}
+          {{action-buttons item=this}}
         </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
-
-{{outlet}}

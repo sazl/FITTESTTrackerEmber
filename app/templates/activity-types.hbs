@@ -21,7 +21,11 @@
           {{/each}}
           </ul>
         </td>
-        <td>{{colorCode}}</td>
+        <td>
+          {{#color-label color=colorCode}}
+            {{colorCode}}
+          {{/color-label}}
+        </td>
         <td>
           {{action-buttons item=this}}
         </td>

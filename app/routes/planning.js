@@ -6,5 +6,6 @@ export default Ember.Route.extend({
     controller.set('activities', this.store.find('activity'));
     controller.set('confirmedTypes', this.store.find('confirmedType'));
     controller.set('staffRoles', this.store.find('staffRole'));
+    controller.set('staffList', this.store.find('staff'));
   }
 });

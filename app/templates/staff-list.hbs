@@ -1,3 +1,6 @@
+{{outlet}}
+
+{{create-button label="Create Staff Member" link="staff-list.new"}}
 
 <table id="staff-list-table"
        class="table table-bordered table-striped table-responsive">
@@ -7,6 +10,7 @@
       <th>Title</th>
       <th>Staff Type</th>
       <th>Profile Type</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -24,9 +28,10 @@
             {{/each}}
           </ul>
         </td>
+        <td>
+          {{action-buttons item=this}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
-
-{{outlet}}

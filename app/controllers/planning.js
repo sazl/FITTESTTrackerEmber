@@ -1,14 +1,43 @@
 import Ember from 'ember';
+import Notify from 'ember-notify';
 
-export default Ember.Controller.extend({
+var PlanningController = Ember.Controller.extend(Ember.Validations.Mixin);
+
+PlanningController.reopen({
   activityNotAvailable: false,
   selectedActivity: null,
   selectedConfirmedType: null,
+  selectedStaffRole: null,
   
   activites: [],
   confirmedTypes: [],
   staffRoles: [],
+  staffList: [],
 
+  staffRoleLocation: function() {
+    return this.get('selectedStaffRole.location');
+  }.property('selectedStaffRole.location'),
+
+  staffRoleStartDate: function() {
+    return this.get('selectedStaffRole.startDate');
+  }.property('selectedStaffRole.startDate'),
+
+  staffRoleEndDate: function() {
+    return this.get('selectedStaffRole.endDate');
+  }.property('selectedStaffRole.endDate'),
+
+  staffRoleComments: function() {
+    return this.get('selectedStaffRole.comments');
+  }.property('selectedStaffRole.comments'),
+
+  staffRoleConfirmedType: function() {
+    return this.get('selectedStaffRole.confirmedType');
+  }.property('selectedStaffRole.confirmedType'),
+
+  staffRoleStaff: function() {
+    return this.get('selectedStaffRole.firstStaff');
+  }.property('selectedStaffRole.firstStaff'),
+  
   activitiesChanged: function() {
     this.set('selectedActivity', this.get('selectedActivities').objectAt(0));
   }.observes('selectedActivities.@each'),
@@ -25,15 +54,24 @@ export default Ember.Controller.extend({
     return result;
   }.property('selectedConfirmedType', 'activities.@each'),
   
-  selectedConfirmedTypeChanged: function() {
-    
-  }.observes('selectedConfirmedType'),
-
-  selectedActivityChanged: function() {
-
-  }.observes('selectedActivity'),
-
   actions: {
-    
+    toggleEdit: function(item) {
+      Notify.success(
+        new Handlebars.SafeString(
+          '<b>Selected Staff Role:</b><br/>'
+            + item.get('description') + '<br/>'
+            + item.get('firstStaff.fullName'))
+      );
+      this.set('selectedStaffRole', item);
+    },
+
+    createStaffRole: function() {
+      Notify.success('Staff Role Updated');
+    }
+  },
+
+  validations: {
   }
 });
+
+export default PlanningController;

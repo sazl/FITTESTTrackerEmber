@@ -43,13 +43,11 @@ app.import('vendor/pace/pace.js');
 app.import('vendor/pace/themes/pace-theme-center-simple.css');
 
 app.import('vendor/moment/moment.js');
-app.import('vendor/parsleyjs/dist/parsley.js');
 
-/*
+
 app.import('vendor/ember-notify/dist/named-amd/main.js', {
   exports: { 'ember-notify': ['default'] } });
 app.import('vendor/ember-notify/dist/ember-notify.css');
-*/
 
 app.import('vendor/select2/select2.css');
 app.import('vendor/select2/select2-bootstrap.css');
@@ -71,7 +69,8 @@ var tableAssets = pickFiles('vendor/datatables/media/images/', {
   destDir: '/images'
 });
 
-app.import('vendor/alertify/alertify.js');
+app.import('vendor/ember-forms/dist/ember_forms.js');
+app.import('vendor/ember-validations/dist/ember-validations.js');
 
 module.exports = mergeTrees([
   app.toTree(),

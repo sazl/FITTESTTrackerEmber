@@ -1,5 +1,7 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+var Language = DS.Model.extend({
   language: DS.attr('string')
 });
+
+export default Language;

@@ -6,8 +6,8 @@
     "jquery-ui": "^1.11.0",
     "qunit": "~1.12.0",
     "ember-qunit": "~0.1.5",
-    "ember": "1.6.0",
-    "ember-data": "1.0.0-beta.8",
+    "ember": "~1.6.1",
+    "ember-data": "~1.0.0-beta.8",
     "ember-resolver": "~0.1.1",
     "loader": "stefanpenner/loader.js#1.0.0",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.2",
@@ -17,10 +17,12 @@
     "bootstrap": "~3.2",
     "datatables": "~1.10.0",
     "pace": "~0.5.5",
-    "alertify": "~0.3.10",
+    "ember-notify": "~0.3.0",
     "parsleyjs": "~2.0.2",
     "moment": "~2.7.0",
     "vis": "~3.0.0",
-    "select2": "~3.5.0"
+    "select2": "~3.5.0",
+    "ember-forms": "*",
+    "ember-validations": "~1.0.0"
   }
 }

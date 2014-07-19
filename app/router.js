@@ -46,8 +46,8 @@ Router.map(function() {
 
   this.resource('staff-dashboard', function() {
     this.resource('staff-list', function() {
+      this.route('new');
       this.resource('staff', { path : ':staff_id' }, function() {
-        this.route('new');
         this.route('edit');
         this.route('delete');
       });
@@ -59,8 +59,8 @@ Router.map(function() {
 
   this.resource('misc-dashboard', function() {
     this.resource('languages', function() {
+      this.route('new');
       this.resource('language', { path : ':language_id' }, function() {
-        this.route('new');
         this.route('edit');
         this.route('delete');        
       });
@@ -83,6 +83,7 @@ Router.map(function() {
     });
   });
 
+  this.route('staff-list/new');
 });
 
 export default Router;
